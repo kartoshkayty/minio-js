@@ -28,7 +28,7 @@ export async function request(
   })
 }
 
-const MAX_RETRIES = 2
+const MAX_RETRIES = 1
 const EXP_BACK_OFF_BASE_DELAY = 1000 // Base delay for exponential backoff
 const ADDITIONAL_DELAY_FACTOR = 1.0 // to avoid synchronized retries
 
