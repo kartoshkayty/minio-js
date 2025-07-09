@@ -9,7 +9,6 @@ logs
 node_modules
 
 /.env
-/dist/
 yarn.lock
 .yarn/
 .yarnrc.yml

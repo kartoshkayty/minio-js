@@ -1,0 +1,21 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.callbackify = callbackify;
+// wrapper an async function that support callback style API.
+// It will preserve 'this'.
+function callbackify(fn) {
+  return function () {
+    const args = [...arguments];
+    const callback = args.pop();
+
+    // If the last argument is a function, assume it's the callback.
+    if (typeof callback === 'function') {
+      return fn.apply(this, args).then(result => callback(null, result), err => callback(err));
+    }
+    return fn.apply(this, arguments);
+  };
+}
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjYWxsYmFja2lmeSIsImZuIiwiYXJncyIsImFyZ3VtZW50cyIsImNhbGxiYWNrIiwicG9wIiwiYXBwbHkiLCJ0aGVuIiwicmVzdWx0IiwiZXJyIl0sInNvdXJjZXMiOlsiY2FsbGJhY2tpZnkuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gd3JhcHBlciBhbiBhc3luYyBmdW5jdGlvbiB0aGF0IHN1cHBvcnQgY2FsbGJhY2sgc3R5bGUgQVBJLlxyXG4vLyBJdCB3aWxsIHByZXNlcnZlICd0aGlzJy5cclxuZXhwb3J0IGZ1bmN0aW9uIGNhbGxiYWNraWZ5KGZuKSB7XHJcbiAgcmV0dXJuIGZ1bmN0aW9uICgpIHtcclxuICAgIGNvbnN0IGFyZ3MgPSBbLi4uYXJndW1lbnRzXVxyXG4gICAgY29uc3QgY2FsbGJhY2sgPSBhcmdzLnBvcCgpXHJcblxyXG4gICAgLy8gSWYgdGhlIGxhc3QgYXJndW1lbnQgaXMgYSBmdW5jdGlvbiwgYXNzdW1lIGl0J3MgdGhlIGNhbGxiYWNrLlxyXG4gICAgaWYgKHR5cGVvZiBjYWxsYmFjayA9PT0gJ2Z1bmN0aW9uJykge1xyXG4gICAgICByZXR1cm4gZm4uYXBwbHkodGhpcywgYXJncykudGhlbihcclxuICAgICAgICAocmVzdWx0KSA9PiBjYWxsYmFjayhudWxsLCByZXN1bHQpLFxyXG4gICAgICAgIChlcnIpID0+IGNhbGxiYWNrKGVyciksXHJcbiAgICAgIClcclxuICAgIH1cclxuXHJcbiAgICByZXR1cm4gZm4uYXBwbHkodGhpcywgYXJndW1lbnRzKVxyXG4gIH1cclxufVxyXG4iXSwibWFwcGluZ3MiOiI7Ozs7OztBQUFBO0FBQ0E7QUFDTyxTQUFTQSxXQUFXQSxDQUFDQyxFQUFFLEVBQUU7RUFDOUIsT0FBTyxZQUFZO0lBQ2pCLE1BQU1DLElBQUksR0FBRyxDQUFDLEdBQUdDLFNBQVMsQ0FBQztJQUMzQixNQUFNQyxRQUFRLEdBQUdGLElBQUksQ0FBQ0csR0FBRyxDQUFDLENBQUM7O0lBRTNCO0lBQ0EsSUFBSSxPQUFPRCxRQUFRLEtBQUssVUFBVSxFQUFFO01BQ2xDLE9BQU9ILEVBQUUsQ0FBQ0ssS0FBSyxDQUFDLElBQUksRUFBRUosSUFBSSxDQUFDLENBQUNLLElBQUksQ0FDN0JDLE1BQU0sSUFBS0osUUFBUSxDQUFDLElBQUksRUFBRUksTUFBTSxDQUFDLEVBQ2pDQyxHQUFHLElBQUtMLFFBQVEsQ0FBQ0ssR0FBRyxDQUN2QixDQUFDO0lBQ0g7SUFFQSxPQUFPUixFQUFFLENBQUNLLEtBQUssQ0FBQyxJQUFJLEVBQUVILFNBQVMsQ0FBQztFQUNsQyxDQUFDO0FBQ0giLCJpZ25vcmVMaXN0IjpbXX0=
